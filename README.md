@@ -1,12 +1,15 @@
-# gsap-lite-promise
+# GSAP Promisify
 
-[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
+[![stable](http://hughsk.github.io/stability-badges/dist/stable.svg)](http://github.com/hughsk/stability-badges)
 
-A Promise wrapper around gsap, based on the npm package gsap-promise created by Matt DesLauriers that use TweenMax.
+Replace GSAP TweenMax or TweenLite callback for promises. This is an improved version of the npm package gsap-lite-promise.
+
+This package doesn't include GSAP to decouple the hard dependency to the package versions and to improve it flexibility.
 
 ```js
-require('gsap/src/minified/TweenLite.min.js');
-const animate = require('gsap-lite-promise')(Promise, TweenLite);
+require('gsap/src/uncompressed/TweenMax.js');
+
+const animate = require('gsap-promisify')(Promise, window.TweenMax);
 
 Promise.all([animate(element, 1.0, { x: 10 }), animate(element, 1.0, { y: 10, delay: 0.5 })]).then(function() {
   console.log('all animations finished');
@@ -15,14 +18,9 @@ Promise.all([animate(element, 1.0, { x: 10 }), animate(element, 1.0, { y: 10, de
 
 ## Arguments
 
-```
-const litePromise = require('gsap-lite-promise');
-const animate = litePromise(Promise, TweenModule);
-```
-
 ### First Argument - Promise
 
-Select your favorite Promise framework and send it as an argument.
+Select your favorite Promise framework and send it as an argument. Is recommended the use of native Promise and in its default the polyfill.
 
 ### Second Argument - TweenModule
 
@@ -36,7 +34,7 @@ Customizing the GSAP implementation to use the built in minified sources and add
 require('gsap/src/minified/plugins/CSSPlugin.min.js');
 require('gsap/src/minified/plugins/ScrollToPlugin.min.js');
 require('gsap/src/minified/TweenLite.min.js');
-const animate = require('gsap-lite-promise')(Promise, window.TweenLite);
+const animate = require('gsap-promisify')(Promise, window.TweenLite);
 animate.staggerTo = function(els, duration, props, delay) {
   return Promise.all(
     els.map((el, i) =>
@@ -49,16 +47,11 @@ animate.staggerTo = function(els, duration, props, delay) {
 };
 ```
 
-## Changelog
-
-_2.0.0_
-Was removed Bluebird like strict dependency so in order to use it you should pass your prefer Promise implementation to the lib.
-
 ## Usage
 
-[![NPM](https://nodei.co/npm/gsap-lite-promise.png)](https://nodei.co/npm/gsap-lite-promise/)
+[![NPM](https://nodei.co/npm/gsap-promisify.png)](https://nodei.co/npm/gsap-promisify/)
 
-This promisifies the `TweenLite` methods: `to`, `from`, `set` and `fromTo`.
+This promisifies the `TweenLite | TweenMax` methods: `to`, `from`, `set` and `fromTo`.
 
 #### `animate.to(element, duration, params)`
 
@@ -68,7 +61,7 @@ This promisifies the `TweenLite` methods: `to`, `from`, `set` and `fromTo`.
 
 #### `animate.fromTo(element, duration, from, to)`
 
-Matches the TweenLite methods by the same name, but returns a Promise for the onComplete event.
+Matches the `TweenLite | TweenMax` methods by the same name, but returns a Promise for the onComplete event.
 
 #### `animate.all(element)`
 
@@ -78,15 +71,6 @@ An alias for `Promise.all`, which will trigger all tweens in parallel.
 
 The default export is the same as `animate.to`.
 
-## Add extras
-
-If you want to use the greensock easing for example or the CSSPlugin to animate CSS properties, you can add those separately, the goal of this is being the lightest posible.
-
-```
-require('gsap/src/uncompressed/easing/EasePack');
-require('gsap/src/uncompressed/plugins/CSSPlugin');
-```
-
 ## License
 
-MIT, see [LICENSE.md](http://github.com/iranreyes/gsap-lite-promise/blob/master/LICENSE.md) for details.
+MIT, see [LICENSE](http://github.com/iranreyes/gsap-promisify/blob/master/LICENSE) for details.
