@@ -1,0 +1,23 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "plugins": ["prettier", "promise"],
+  "extends": ["eslint:recommended", "prettier"],
+  "rules": {
+    "no-unused-vars": "warn",
+    "prettier/prettier": "error",
+    "promise/param-names": "error",
+    "promise/no-return-wrap": "error"
+  },
+  "globals": {
+    "TweenLite": false
+  }
+}
