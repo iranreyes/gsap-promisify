@@ -1,6 +1,6 @@
 {
   "name": "gsap-promisify",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Replace GSAP TweenMax or TweenLite callback for promises",
   "main": "index.js",
   "license": "MIT",
@@ -28,7 +28,10 @@
     "tape": "^3.5.0"
   },
   "lint-staged": {
-    "**/*.{js,jsx,json,css}": ["prettier --write", "git add"]
+    "**/*.{js,jsx,json,css}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "scripts": {
     "test": "browserify test.js | tap-closer | smokestack | faucet",
