@@ -36,7 +36,7 @@
     "js-lint": "eslint './**/*.js' -c ./.eslintrc --quiet --ignore-pattern .gitignore",
     "audit": "npm run audit-nsp",
     "audit-nsp": "nsp check",
-    "postinstall": "npm-run-all audit"
+    "postinstall": "npm run audit"
   },
   "keywords": [],
   "repository": {
