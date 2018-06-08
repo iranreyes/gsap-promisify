@@ -1,6 +1,6 @@
 {
   "name": "gsap-promisify",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Replace GSAP TweenMax or TweenLite callback for promises",
   "main": "index.js",
   "license": "MIT",
