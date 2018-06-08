@@ -21,7 +21,6 @@
     "gsap": "1.20.4",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.0",
-    "nsp": "^3.2.1",
     "prettier": "^1.11.1",
     "smokestack": "^3.2.1",
     "tap-closer": "1.0.0",
@@ -36,10 +35,7 @@
   "scripts": {
     "test": "browserify test.js | tap-closer | smokestack | faucet",
     "prepush": "echo 'Pre-push checks...' && npm run js-lint",
-    "js-lint": "eslint './**/*.js' -c ./.eslintrc --quiet --ignore-pattern .gitignore",
-    "audit": "npm run audit-nsp",
-    "audit-nsp": "nsp check",
-    "postinstall": "npm run audit"
+    "js-lint": "eslint './**/*.js' -c ./.eslintrc --quiet --ignore-pattern .gitignore"
   },
   "keywords": [],
   "repository": {
